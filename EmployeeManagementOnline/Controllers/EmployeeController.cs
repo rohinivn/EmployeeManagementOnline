@@ -31,6 +31,7 @@ namespace EmployeeManagementOnline.Controllers
         {
             Employee employee = new Employee();
             UpdateModel<Employee>(employee);
+            //TryUpdateModel(productData);
             employeeRepository.AddEmployee(employee);
             TempData["Message"] = "Employee Added Successfully!";
             return RedirectToAction("Employee");
