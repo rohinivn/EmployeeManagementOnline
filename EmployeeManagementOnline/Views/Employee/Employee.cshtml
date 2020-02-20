@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EmployeeManagementOnline.Entity.Employee>
+
+@{
+    ViewBag.Title = "EmployeeDetails";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        padding: 15px;
+        width: 100;
+    }
+</style>
+<h2>Welcome</h2>
+@if (TempData["Message"] != null)
+{
+    @Html.Label((string)TempData["Message"]);
+}
+<br />
+@Html.ActionLink("Add New Employee", "Create","Account")
+<br />
+<table>
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Work Type</th>
+        <th>Experience</th>
+        <th>Salary</th>
+        <th>Action</th>
+    </tr>
+    @foreach (EmployeeManagementOnline.Entity.Employee employee in Model)
+    {
+        <tr>
+            <td>@employee.EmployeeId</td>
+            <td>@employee.EmployeeName</td>
+            <td>@employee.WorkType</td>
+            <td>@employee.Experience</td>
+            <td>@employee.Salary</td>
+            <td>
+                @Html.ActionLink("Edit / ", "Edit", new { id = employee.EmployeeId })
+                @Html.ActionLink("Delete", "Delete", new { id = employee.EmployeeId })
+            </td>
+        </tr>
+    }
+</table>

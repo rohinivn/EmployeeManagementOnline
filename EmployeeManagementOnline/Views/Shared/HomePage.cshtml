@@ -1,0 +1,24 @@
+﻿@model EmployeeManagementOnline.Entity.Account
+
+@{
+    ViewBag.Title = "HomePage";
+}
+<html>
+<head>
+    <title>@ViewBag.Title-Employee  Management Online</title>
+    <link rel="stylesheet" href="~/Content/Style.css" type="text/css"/>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li>@Html.ActionLink("Employee Management", "Employee", "Employee")</li>
+            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+            <li>@Html.ActionLink("SignUp", "SignUp", "Account")</li>
+        </ul>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
+
