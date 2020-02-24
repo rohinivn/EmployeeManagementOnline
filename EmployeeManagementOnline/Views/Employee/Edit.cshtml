@@ -1,7 +1,9 @@
-﻿@model IEnumerable<EmployeeManagementOnline.Entity.Employee> 
+﻿@model EmployeeManagementOnline.Entity.Employee
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+
 }
 
 <style>
@@ -15,28 +17,31 @@
         border: none;
         padding: 10px;
     }
+    h2{
+        text-align:center;
+    }
 </style>
 
 <h2>Edit</h2>
 @using (Html.BeginForm("Update", "Employee", FormMethod.Post))
 {
     @Html.HiddenFor(Model => Model.EmployeeId);
-    <table>
+    <table align="center">
         <tr>
             <td><lable>Employee Name : </lable></td>
-            <td><lable>@Html.TextBoxFor(Model => Model.EmployeeName)</lable></td>
+            <td><lable>@Html.TextBoxFor(Model => Model.EmployeeName)</lable><span> @Html.ValidationMessageFor(model => model.EmployeeName)</span></td>
         </tr>
         <tr>
             <td><lable>Work Type : </td>
-            <td><lable>@Html.TextBoxFor(Model => Model.WorkType)</lable></td>
+            <td><lable>@Html.TextBoxFor(Model => Model.WorkType)</lable><span> @Html.ValidationMessageFor(model => model.WorkType)</span></td>
         </tr>
         <tr>
             <td><lable>Experience: </td>
-            <td><lable>@Html.TextBoxFor(Model => Model.Experience)</lable></td>
+            <td><lable>@Html.TextBoxFor(Model => Model.Experience)</lable><span> @Html.ValidationMessageFor(model => model.Experience)</span></td>
         </tr>
         <tr>
             <td><lable>Salary: </td>
-            <td><lable>@Html.TextBoxFor(Model => Model.Salary)</lable></td>
+            <td><lable>@Html.TextBoxFor(Model => Model.Salary)</lable><span> @Html.ValidationMessageFor(model => model.Salary)</span></td>
         </tr>
         <tr>
             <td>

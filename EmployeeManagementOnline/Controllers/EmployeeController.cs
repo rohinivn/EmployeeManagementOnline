@@ -2,8 +2,6 @@
 using EmployeeManagementOnline.Repository;
 using EmployeeManagementOnline.Entity;
 using System.Web.Mvc;
-using System;
-
 namespace EmployeeManagementOnline.Controllers
 {
     public class EmployeeController : Controller
@@ -30,9 +28,13 @@ namespace EmployeeManagementOnline.Controllers
             //Employee employee = new Employee();
             //UpdateModel<Employee>(employee);
             ////TryUpdateModel(productData);
-            employeeRepository.AddEmployee(employee);
-            TempData["Message"] = "Employee Added Successfully!";
-            return RedirectToAction("Employee");
+            if (ModelState.IsValid)
+            {
+                employeeRepository.AddEmployee(employee);
+                TempData["Message"] = "Employee Added Successfully!";
+                return RedirectToAction("Employee");
+            }
+            return View();
         }
 
         public ActionResult Delete(string id)
@@ -56,9 +58,13 @@ namespace EmployeeManagementOnline.Controllers
             //employee.WorkType = formCollection["WorkType"];
             //employee.Experience = Convert.ToByte(formCollection["Experience"]);
             //employee.Salary = Convert.ToDouble(formCollection["Salary"]);
-            employeeRepository.UpdateEmployee(employee);
-            TempData["Message"] = "Employee Details Updated Successfully";
-            return RedirectToAction("Employee");
+            if (ModelState.IsValid)
+            {
+                employeeRepository.UpdateEmployee(employee);
+                TempData["Message"] = "Employee Details Updated Successfully";
+                return RedirectToAction("Employee");
+            }
+            return View();
         }
     }
 }

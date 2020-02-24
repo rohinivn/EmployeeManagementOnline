@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
 <style>
@@ -15,31 +16,37 @@
         border: none;
         padding: 10px;
     }
+    span{
+        color:red;
+    }
+    h2{
+        text-align:center;
+    }
 </style>
 <h2>Create</h2>
 
 @using (Html.BeginForm("Create", "Employee", FormMethod.Post))
 {
-<table>
+<table align="center">
     <tr>
         <td><lable>Employee ID :</lable></td>
-        <td> <lable>@Html.TextBoxFor(Model => Model.EmployeeId)</lable></td>
+        <td> <lable>@Html.TextBoxFor(Model => Model.EmployeeId)</lable><span> @Html.ValidationMessageFor(model => model.EmployeeId)</span></td>
     </tr>
     <tr>
         <td><lable>Employee Name : </lable></td>
-        <td><lable>@Html.TextBoxFor(Model => Model.EmployeeName)</lable></td>
+        <td><lable>@Html.TextBoxFor(Model => Model.EmployeeName)</lable><span> @Html.ValidationMessageFor(model => model.EmployeeName)</span></td>
     </tr>
     <tr>
         <td><lable>Work Type : </td>
-        <td><lable>@Html.TextBoxFor(Model => Model.WorkType)</lable></td>
+        <td><lable>@Html.TextBoxFor(Model => Model.WorkType)</lable><span> @Html.ValidationMessageFor(model => model.WorkType)</span></td>
     </tr>
     <tr>
         <td><lable>Experience: </td>
-        <td><lable>@Html.TextBoxFor(Model => Model.Experience)</lable></td>
+        <td><lable>@Html.TextBoxFor(Model => Model.Experience)</lable><span> @Html.ValidationMessageFor(model => model.Experience)</span></td>
     </tr>
     <tr>
         <td><lable>Salary: </td>
-        <td><lable>@Html.TextBoxFor(Model => Model.Salary)</lable></td>
+        <td><lable>@Html.TextBoxFor(Model => Model.Salary)</lable><span> @Html.ValidationMessageFor(model => model.Salary)</span></td>
     </tr>
     <tr>
         <td>

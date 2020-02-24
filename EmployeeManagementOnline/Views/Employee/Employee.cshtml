@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "EmployeeDetails";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
 <style>
@@ -9,6 +10,9 @@
         border: 1px solid black;
         padding: 15px;
         width: 100;
+    }
+    h2{
+        text-align:center;
     }
 </style>
 <h2>Welcome</h2>
@@ -19,7 +23,7 @@
 <br />
 @Html.ActionLink("Add New Employee", "Create","Employee")
 <br />
-<table>
+<table align="center">
     <tr>
         <th>Employee Id</th>
         <th>Employee Name</th>

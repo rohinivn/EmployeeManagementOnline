@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagementOnline.Entity
 {
     public class Employee
     {
+        [Required(ErrorMessage="Name is required")]
         public string EmployeeName { get; set; }
+        [Required(ErrorMessage = "Salary is required")]
+        [Range(0.01, 10000000.00, ErrorMessage = "Salary must be between 0.01 and 10000000.00")]
+        [DataType(DataType.Currency)]
         public double Salary { get; set; }
+        [Required(ErrorMessage = "Worktype is required")]
+        [StringLength(8,ErrorMessage="Length should be 8")]
         public string WorkType { get; set; }
+        [ScaffoldColumn(false)]
         public string EmployeeId { get; set; }
+        [Required(ErrorMessage = "Experience is required")]
+
         public byte Experience { get; set; }
         public Employee(string name, string workType, string id, byte experience, double salary)
         {
