@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmployeeManagementOnline.Entity.Employee>
+﻿@model IEnumerable<EmployeeManagementOnline.Entity.Employee> 
 
 @{
     ViewBag.Title = "Edit";
@@ -23,20 +23,20 @@
     @Html.HiddenFor(Model => Model.EmployeeId);
     <table>
         <tr>
-            <td>Employee Name : </td>
-            <td>@Html.TextBoxFor(Model => Model.EmployeeName)</td>
+            <td><lable>Employee Name : </lable></td>
+            <td><lable>@Html.TextBoxFor(Model => Model.EmployeeName)</lable></td>
         </tr>
         <tr>
-            <td>Work Type : </td>
-            <td>@Html.TextBoxFor(Model => Model.WorkType)</td>
+            <td><lable>Work Type : </td>
+            <td><lable>@Html.TextBoxFor(Model => Model.WorkType)</lable></td>
         </tr>
         <tr>
-            <td>Experience: </td>
-            <td>@Html.TextBoxFor(Model => Model.Experience)</td>
+            <td><lable>Experience: </td>
+            <td><lable>@Html.TextBoxFor(Model => Model.Experience)</lable></td>
         </tr>
         <tr>
-            <td>Salary: </td>
-            <td>@Html.TextBoxFor(Model => Model.Salary)</td>
+            <td><lable>Salary: </td>
+            <td><lable>@Html.TextBoxFor(Model => Model.Salary)</lable></td>
         </tr>
         <tr>
             <td>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmployeeManagementOnline.Entity.Employee>
+﻿@model EmployeeManagementOnline.Entity.Employee
 
 @{
     ViewBag.Title = "Create";
@@ -20,34 +20,34 @@
 
 @using (Html.BeginForm("Create", "Employee", FormMethod.Post))
 {
-    <table>
-        <tr>
-            <td>Employee ID :</td>
-            <td> @Html.TextBoxFor(Model => Model.EmployeeId)</td>
-        </tr>
-        <tr>
-            <td>Employee Name : </td>
-            <td>@Html.TextBoxFor(Model => Model.EmployeeName)</td>
-        </tr>
-        <tr>
-            <td>Work Type : </td>
-            <td>@Html.TextBoxFor(Model => Model.WorkType)</td>
-        </tr>
-        <tr>
-            <td>Experience: </td>
-            <td>@Html.TextBoxFor(Model => Model.Experience)</td>
-        </tr>
-        <tr>
-            <td>Salary: </td>
-            <td>@Html.TextBoxFor(Model => Model.Salary)</td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" />
-            </td>
-            <td><a href="/Employee">Back</a></td>
-        </tr>
-    </table>
+<table>
+    <tr>
+        <td><lable>Employee ID :</lable></td>
+        <td> <lable>@Html.TextBoxFor(Model => Model.EmployeeId)</lable></td>
+    </tr>
+    <tr>
+        <td><lable>Employee Name : </lable></td>
+        <td><lable>@Html.TextBoxFor(Model => Model.EmployeeName)</lable></td>
+    </tr>
+    <tr>
+        <td><lable>Work Type : </td>
+        <td><lable>@Html.TextBoxFor(Model => Model.WorkType)</lable></td>
+    </tr>
+    <tr>
+        <td><lable>Experience: </td>
+        <td><lable>@Html.TextBoxFor(Model => Model.Experience)</lable></td>
+    </tr>
+    <tr>
+        <td><lable>Salary: </td>
+        <td><lable>@Html.TextBoxFor(Model => Model.Salary)</lable></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" />
+        </td>
+        <td><a href="/Employee">Back</a></td>
+    </tr>
+</table>
 }
 
 

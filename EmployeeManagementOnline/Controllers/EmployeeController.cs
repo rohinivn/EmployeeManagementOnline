@@ -16,22 +16,20 @@ namespace EmployeeManagementOnline.Controllers
         // GET: Employee
         public ActionResult Employee()
         {
-            IEnumerable<Employee> employees = employeeRepository.GetAllEmployees();
-            return View(employees);
+            IEnumerable<Employee> employee = employeeRepository.GetAllEmployees();
+            return View(employee);
         }
-        [HttpGet]
-        [ActionName("Create")]
-        public ActionResult Create_Get()
+
+        public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [ActionName("Create")]
-        public ActionResult Create_Post()
+        public ActionResult Create(Employee employee)
         {
-            Employee employee = new Employee();
-            UpdateModel<Employee>(employee);
-            //TryUpdateModel(productData);
+            //Employee employee = new Employee();
+            //UpdateModel<Employee>(employee);
+            ////TryUpdateModel(productData);
             employeeRepository.AddEmployee(employee);
             TempData["Message"] = "Employee Added Successfully!";
             return RedirectToAction("Employee");
@@ -50,14 +48,14 @@ namespace EmployeeManagementOnline.Controllers
             return View(employees);
         }
         [HttpPost]
-        public ActionResult Update(FormCollection formCollection)
+        public ActionResult Update(Employee employee)
         {
-            Employee employee = new Employee();
-            employee.EmployeeId = formCollection["EmployeeId"];
-            employee.EmployeeName = formCollection["EmployeeName"];
-            employee.WorkType = formCollection["WorkType"];
-            employee.Experience = Convert.ToByte(formCollection["Experience"]);
-            employee.Salary = Convert.ToDouble(formCollection["Salary"]);
+            //Employee employee = new Employee();
+            //employee.EmployeeId = formCollection["EmployeeId"];
+            //employee.EmployeeName = formCollection["EmployeeName"];
+            //employee.WorkType = formCollection["WorkType"];
+            //employee.Experience = Convert.ToByte(formCollection["Experience"]);
+            //employee.Salary = Convert.ToDouble(formCollection["Salary"]);
             employeeRepository.UpdateEmployee(employee);
             TempData["Message"] = "Employee Details Updated Successfully";
             return RedirectToAction("Employee");
