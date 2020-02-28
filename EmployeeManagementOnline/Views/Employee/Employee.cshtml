@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "EmployeeDetails";
-    Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
 <style>
@@ -14,6 +13,7 @@
     h2{
         text-align:center;
     }
+
 </style>
 <h2>Welcome</h2>
 @if (TempData["Message"] != null)
@@ -22,28 +22,8 @@
 }
 <br />
 @Html.ActionLink("Add New Employee", "Create","Employee")
-<br />
-<table align="center">
-    <tr>
-        <th>Employee Id</th>
-        <th>Employee Name</th>
-        <th>Work Type</th>
-        <th>Experience</th>
-        <th>Salary</th>
-        <th>Action</th>
-    </tr>
+
     @foreach (EmployeeManagementOnline.Entity.Employee employee in Model)
     {
-        <tr>
-            <td><label>@employee.EmployeeId</label></td>
-            <td><lable>@employee.EmployeeName</lable></td>
-            <td><lable>@employee.WorkType</lable></td>
-            <td><lable>@employee.Experience</lable></td>
-            <td><lable>@employee.Salary</lable></td>
-            <td>
-                @Html.ActionLink("Edit / ", "Edit", new { id = employee.EmployeeId })
-                @Html.ActionLink("Delete", "Delete", new { id = employee.EmployeeId })
-            </td>
-        </tr>
+        @Html.Partial("_DisplayView",employee)
     }
-</table>

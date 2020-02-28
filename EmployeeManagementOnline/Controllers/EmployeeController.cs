@@ -46,11 +46,11 @@ namespace EmployeeManagementOnline.Controllers
         [HttpGet]
         public ActionResult Edit(string id)
         {
-            Employee employees = employeeRepository.GetEmployee(id);
-            return View(employees);
+            Employee employee = employeeRepository.GetEmployee(id);
+            return View(employee);
         }
         [HttpPost]
-        public ActionResult Update(Employee employee)
+        public ActionResult Update([Bind(Include  = "EmployeeName,WorkType,Experience,Salary")] Employee employee)
         {
             //Employee employee = new Employee();
             //employee.EmployeeId = formCollection["EmployeeId"];
@@ -58,13 +58,14 @@ namespace EmployeeManagementOnline.Controllers
             //employee.WorkType = formCollection["WorkType"];
             //employee.Experience = Convert.ToByte(formCollection["Experience"]);
             //employee.Salary = Convert.ToDouble(formCollection["Salary"]);
+            employee.EmployeeId = EmployeeRepository.employees.Find(name => name.EmployeeName == employee.EmployeeName).EmployeeId;
             if (ModelState.IsValid)
             {
                 employeeRepository.UpdateEmployee(employee);
                 TempData["Message"] = "Employee Details Updated Successfully";
                 return RedirectToAction("Employee");
             }
-            return View();
+            return View(employee);
         }
     }
 }

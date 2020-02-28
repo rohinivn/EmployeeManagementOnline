@@ -34,7 +34,7 @@ namespace EmployeeManagementOnline.Entity
             Qualification = qualification;
             Address = address;
             City = city;
-            State = State;
+            State = state;
             PhoneNumber = phoneNumber;
             PinCode = pin;
         }

@@ -1,0 +1,24 @@
+﻿@model EmployeeManagementOnline.Entity.Employee
+
+
+<table align="center">
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Work Type</th>
+        <th>Experience</th>
+        <th>Salary</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td><label>@Model.EmployeeId</label></td>
+        <td><lable>@Model.EmployeeName</lable></td>
+        <td><lable>@Model.WorkType</lable></td>
+        <td><lable>@Model.Experience</lable></td>
+        <td><lable>@Model.Salary</lable></td>
+        <td>
+            @Html.ActionLink("Edit / ", "Edit", new { id = Model.EmployeeId })
+            @Html.ActionLink("Delete", "Delete", new { id = Model.EmployeeId })
+        </td>
+    </tr>
+</table>

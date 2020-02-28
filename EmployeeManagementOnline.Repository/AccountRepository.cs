@@ -12,6 +12,7 @@ namespace EmployeeManagementOnline.Repository
         static AccountRepository()
         {
             accounts.Add(new Account("rohini", "rohini@gmail.com", "Roh1ni12", "female", "tamil", "UG", "268 A", "coimabatore", "tamilnadu", 9896543211, 765432));
+            accounts.Add(new Account("rohini", "rohini@gmail.com", "Roh1ni12", "female", "tamil", "UG", "268 A", "coimabatore", "tamilnadu", 9896543211, 765432));
         }
 
     }

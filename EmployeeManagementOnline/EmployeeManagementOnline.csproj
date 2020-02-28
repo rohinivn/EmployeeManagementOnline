@@ -149,6 +149,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Shared\_MasterPage.cshtml" />
+    <Content Include="Views\Shared\_DisplayView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
