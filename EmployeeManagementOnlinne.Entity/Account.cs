@@ -8,11 +8,7 @@ namespace EmployeeManagementOnline.Entity
 {
     public class Account
     {
-        [Required(ErrorMessage="Name is required")]
-        [RegularExpression(@"^(([A-za-z]+[\s]{1}[A-za-z]+)|([A-Za-z]+))$", ErrorMessage="Please enter valid format")]
         public string Name { get; set; }
-        [Required(ErrorMessage ="EmailId is required")]
-        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",ErrorMessage = "Please enter a valid email address")]
         public string EmailId { get; set; }
         public string Password { get; set; }
         public string Gender { get; set; }
@@ -37,6 +33,10 @@ namespace EmployeeManagementOnline.Entity
             State = state;
             PhoneNumber = phoneNumber;
             PinCode = pin;
+        }
+        public Account()
+        {
+
         }
     }
 }

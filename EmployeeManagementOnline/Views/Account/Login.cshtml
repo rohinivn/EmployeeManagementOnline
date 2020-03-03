@@ -10,26 +10,34 @@
     table, th, td {
         border: 1px solid black;
         padding: 15px;
-        width: 100;
+        width: 100px;
+    }
+
+    span {
+        color: red;
     }
 </style>
+@if (TempData["Message"] != null)
+{
+    @Html.Label((string)TempData["Message"]);
+}
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     <table align="center">
 
         <tr>
-            <td>Email ID</td>
-            <td>@Html.TextBoxFor(Model => Model.EmailId)</td>
+            <td><label>*Email ID</label></td>
+            <td>@Html.TextBoxFor(Model => Model.EmailId)<span>@Html.ValidationMessageFor(Model => Model.EmailId)</span></td>
         </tr>
         <tr>
-            <td>Name</td>
-            <td>@Html.TextBoxFor(Model => Model.Password)</td>
+            <td><label>*Password</label></td>
+            <td>@Html.PasswordFor(Model => Model.Password)<span>@Html.ValidationMessageFor(Model => Model.Password)</span></td>
         </tr>
         <tr>
             <td>
                 <input type="submit" />
             </td>
-            <td>Don't have an account??@Html.ActionLink("SignUp","SignUp","Account")</td>
+            <td>Don't have an account??@Html.ActionLink("SignUp", "SignUp", "Account")</td>
         </tr>
     </table>
 }

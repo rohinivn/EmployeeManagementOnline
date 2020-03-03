@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using EmployeeManagementOnline.Entity;
+using EmployeeManagementOnline.Models;
 
 namespace EmployeeManagementOnline.Controllers
 {
@@ -11,18 +12,42 @@ namespace EmployeeManagementOnline.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult SignUp(Account account)
+        public ActionResult SignUp(SignUpViewModel signUpViewModel)
         {
-            return RedirectToAction("SignUp");
+            if(ModelState.IsValid)
+            {
+                Account account = new Account();
+                account.Name = signUpViewModel.Name;
+                account.EmailId = signUpViewModel.EmailId;
+                account.Gender = signUpViewModel.Gender;
+                account.Password = signUpViewModel.Password;
+                account.LanguagesKnown = signUpViewModel.LanguagesKnown;
+                account.Qualification = signUpViewModel.Qualification;
+                account.Address = signUpViewModel.Address;
+                account.City = signUpViewModel.City;
+                account.State = signUpViewModel.State;
+                account.PhoneNumber = signUpViewModel.PhoneNumber;
+                account.PinCode = signUpViewModel.PinCode;
+                return RedirectToAction("Login");
+            }
+            return View();
         }
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string email,string Account)
+        public ActionResult Login(LoginViewModel loginViewModel)
         {
-            return Redirect("~/Controller/Employee/Employee");
+            if(ModelState.IsValid)
+            {
+                Account account = new Account();
+                account.EmailId = loginViewModel.EmailId;
+                account.Password = loginViewModel.Password;
+                TempData["Message"] = "Login Successfull!";
+            }
+            return View();
         }
     }
 }
