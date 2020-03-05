@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmployeeManagementOnline.Entity.Employee>
+﻿@model IEnumerable<EmployeeManagementOnline.Models.EmployeeViewModel>
 
 @{
     ViewBag.Title = "EmployeeDetails";
@@ -8,7 +8,7 @@
     table, th, td {
         border: 1px solid black;
         padding: 15px;
-        width: 100;
+        width: 100px;
     }
     h2{
         text-align:center;
@@ -23,7 +23,7 @@
 <br />
 @Html.ActionLink("Add New Employee", "Create","Employee")
 
-    @foreach (EmployeeManagementOnline.Entity.Employee employee in Model)
+    @foreach (EmployeeManagementOnline.Models.EmployeeViewModel employee in Model)
     {
         @Html.Partial("_DisplayView",employee)
     }

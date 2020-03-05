@@ -138,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\SignUpViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,6 +154,8 @@
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Shared\_MasterPage.cshtml" />
     <Content Include="Views\Shared\_DisplayView.cshtml" />
+    <Content Include="Views\Employee\EmployeeDetails.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

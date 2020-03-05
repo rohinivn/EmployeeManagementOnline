@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EmployeeManagementOnline.Entity.Employee>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (TempData["Message"] != null)
+{
+    @Html.Label((string)TempData["Message"]);
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experience)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Experience)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.EmployeeId }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.EmployeeId  })
+        </td>
+    </tr>
+}
+
+</table>

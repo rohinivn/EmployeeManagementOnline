@@ -1,21 +1,37 @@
 ﻿using System.Collections.Generic;
-using EmployeeManagementOnline.Repository;
 using EmployeeManagementOnline.Entity;
 using System.Web.Mvc;
+using EmployeeManagementOnline.Models;
+using System.Linq;
+using System;
+
 namespace EmployeeManagementOnline.Controllers
 {
     public class EmployeeController : Controller
     {
-        EmployeeRepository employeeRepository;
-        public EmployeeController()
-        {
-            employeeRepository = new EmployeeRepository();
-        }
+       
         // GET: Employee
-        public ActionResult Employee()
+        //public ActionResult Employee()
+        //{
+        //    using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+        //        return View(employeeDBContext.Employees.ToList());
+        //}
+        public ActionResult EmployeeDetails()
         {
-            IEnumerable<Employee> employee = employeeRepository.GetAllEmployees();
-            return View(employee);
+            using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+            {
+                List<Employee> data = employeeDBContext.Employees.ToList();
+                return View(data);
+            }
+                
+        }
+        public ActionResult Details(int id)
+        {
+            using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+            {
+                Employee employee = employeeDBContext.Employees.Find(id);
+                return View(employee);
+            }
         }
 
         public ActionResult Create()
@@ -23,49 +39,80 @@ namespace EmployeeManagementOnline.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Employee employee)
+        public ActionResult Create(EmployeeViewModel employeeViewModel)
         {
-            //Employee employee = new Employee();
             //UpdateModel<Employee>(employee);
             ////TryUpdateModel(productData);
             if (ModelState.IsValid)
             {
-                employeeRepository.AddEmployee(employee);
-                TempData["Message"] = "Employee Added Successfully!";
-                return RedirectToAction("Employee");
+                Employee employee = new Employee();
+                employee.EmployeeId = employeeViewModel.EmployeeId;
+                employee.EmployeeName = employeeViewModel.EmployeeName;
+                employee.Experience = employeeViewModel.Experience;
+                employee.WorkType = employeeViewModel.WorkType;
+                employee.Salary = employeeViewModel.Salary;
+                using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+                {
+                    employeeDBContext.Employees.Add(employee);
+                    employeeDBContext.SaveChanges(); 
+                    TempData["Message"] = "Employee Added Successfully!";
+                    return RedirectToAction("EmployeeDetails");
+                }
             }
             return View();
         }
 
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            employeeRepository.DeleteEmployee(id);
-            TempData["Message"] = "Employee Deleted Successfully!";
-            return RedirectToAction("Employee");
+            using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+            {
+                Employee employee = employeeDBContext.Employees.Find(id);
+                employeeDBContext.Employees.Remove(employee);
+                employeeDBContext.SaveChanges();
+                TempData["Message"] = "Employee Deleted Successfully!";
+                return RedirectToAction("EmployeeDetails");
+            }
         }
         [HttpGet]
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            Employee employee = employeeRepository.GetEmployee(id);
-            return View(employee);
+            using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+            {
+                Employee employee = employeeDBContext.Employees.Find(id);
+                return View(employee);
+            }
         }
+        [ActionName("Edit")]
         [HttpPost]
-        public ActionResult Update([Bind(Include  = "EmployeeName,WorkType,Experience,Salary")] Employee employee)
+        public ActionResult Update(EmployeeViewModel employeeViewModel)
         {
-            //Employee employee = new Employee();
+            Employee employee = new Employee();
             //employee.EmployeeId = formCollection["EmployeeId"];
             //employee.EmployeeName = formCollection["EmployeeName"];
             //employee.WorkType = formCollection["WorkType"];
             //employee.Experience = Convert.ToByte(formCollection["Experience"]);
             //employee.Salary = Convert.ToDouble(formCollection["Salary"]);
-            employee.EmployeeId = EmployeeRepository.employees.Find(name => name.EmployeeName == employee.EmployeeName).EmployeeId;
             if (ModelState.IsValid)
             {
-                employeeRepository.UpdateEmployee(employee);
-                TempData["Message"] = "Employee Details Updated Successfully";
-                return RedirectToAction("Employee");
+                using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+                {
+                    //employee.EmployeeId = employeeDBContext.Employees.Find(name => name.EmployeeName == employeeViewModel.EmployeeName).EmployeeId;
+                    employee = employeeDBContext.Employees.Find(employeeViewModel.EmployeeId);
+                    if (employee != null)
+                    {
+                        employee.EmployeeName = employeeViewModel.EmployeeName;
+                        employee.WorkType = employeeViewModel.WorkType;
+                        employee.Experience = employeeViewModel.Experience;
+                        employee.Salary = employeeViewModel.Salary;
+                        employee.EmployeeId = employeeViewModel.EmployeeId;
+                        employeeDBContext.SaveChanges();
+                        TempData["Message"] = "Employee Details Updated Successfully";
+                        return RedirectToAction("EmployeeDetails");
+                    }
+
+                }
             }
-            return View(employee);
+                return View(employee);
         }
     }
 }

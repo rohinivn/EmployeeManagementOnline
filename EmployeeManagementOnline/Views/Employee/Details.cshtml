@@ -1,0 +1,50 @@
+﻿@model EmployeeManagementOnline.Entity.Employee
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experience)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId }) |
+    @Html.ActionLink("Back to List", "EmployeeDetails")
+</p>

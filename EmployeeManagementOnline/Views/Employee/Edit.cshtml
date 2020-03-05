@@ -9,7 +9,7 @@
     table, th, td {
         border: 1px solid black;
         padding: 15px;
-        width: 100;
+        width: 100px;
     }
 
     input[type="text"] {
@@ -22,7 +22,7 @@
 </style>
 
 <h2>Edit</h2>
-@using (Html.BeginForm("Update", "Employee", FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.HiddenFor(Model => Model.EmployeeId);
     <table align="center">
@@ -46,7 +46,7 @@
             <td>
                 <input type="submit" value="Update" />
             </td>
-            <td><a href="/Employee">Back</a></td>
+            <td><a href="~/Views/Employee/EmployeeDetails.cshtml">Back</a></td>
         </tr>
     </table>
 }

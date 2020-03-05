@@ -8,7 +8,7 @@
     table, th, td {
         border: 1px solid black;
         padding: 15px;
-        width: 100;
+        width: 100px;
     }
 
     input[type="text"] {
@@ -29,10 +29,6 @@
 {
 <table align="center">
     <tr>
-        <td><lable>Employee ID :</lable></td>
-        <td> <lable>@Html.TextBoxFor(Model => Model.EmployeeId)</lable><span> @Html.ValidationMessageFor(model => model.EmployeeId)</span></td>
-    </tr>
-    <tr>
         <td><lable>Employee Name : </lable></td>
         <td><lable>@Html.TextBoxFor(Model => Model.EmployeeName)</lable><span> @Html.ValidationMessageFor(model => model.EmployeeName)</span></td>
     </tr>
@@ -52,7 +48,7 @@
         <td>
             <input type="submit" />
         </td>
-        <td><a href="/Employee">Back</a></td>
+        <td><a href="~/Views/Employee/EmployeeDetails.cshtml">Back</a></td>
     </tr>
 </table>
 }

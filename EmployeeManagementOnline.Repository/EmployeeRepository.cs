@@ -11,9 +11,9 @@ namespace EmployeeManagementOnline.Repository
         public static List<Employee> employees = new List<Employee>();
         static EmployeeRepository()
         {
-            employees.Add(new Employee("Rohini", "fulltime", "E001", 2, 12000));
-            employees.Add(new Employee("Megala", "fulltime", "E002", 3, 20000));
-            employees.Add(new Employee("Adhav", "parttime", "E003", 1, 8000));
+            employees.Add(new Employee("Rohini", "fulltime", 1, 2, 12000));
+            employees.Add(new Employee("Megala", "fulltime", 2, 3, 20000));
+            employees.Add(new Employee("Adhav", "parttime", 3, 1, 8000));
         }
 
         public IEnumerable<Employee> GetAllEmployees()
@@ -24,11 +24,11 @@ namespace EmployeeManagementOnline.Repository
         {
             employees.Add(employee);
         }
-        public Employee GetEmployee(string employeeId)
+        public Employee GetEmployee(int employeeId)
         {
             return employees.Find(id => id.EmployeeId == employeeId);
         }
-        public void DeleteEmployee(string employeeId)
+        public void DeleteEmployee(int employeeId)
         {
             Employee employee = GetEmployee(employeeId);
             if (employee != null)

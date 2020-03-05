@@ -51,6 +51,11 @@ namespace EmployeeManagementOnline.Controllers
                 Account account = new Account();
                 account.EmailId = loginViewModel.EmailId;
                 account.Password = loginViewModel.Password;
+                using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+                {
+                    
+                }
+                ModelState.Clear();
                 TempData["Message"] = "Login Successfull!";
             }
             return View();
