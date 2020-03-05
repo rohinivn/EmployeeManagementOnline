@@ -9,6 +9,7 @@ namespace EmployeeManagementOnline.Entity
     public class Account
     {
         public string Name { get; set; }
+        [Key]
         public string EmailId { get; set; }
         public string Password { get; set; }
         public string Gender { get; set; }

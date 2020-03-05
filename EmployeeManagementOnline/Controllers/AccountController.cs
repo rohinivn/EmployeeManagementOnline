@@ -14,7 +14,7 @@ namespace EmployeeManagementOnline.Controllers
         [HttpPost]
         public ActionResult SignUp(SignUpViewModel signUpViewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Account account = new Account();
                 account.Name = signUpViewModel.Name;
@@ -28,9 +28,15 @@ namespace EmployeeManagementOnline.Controllers
                 account.State = signUpViewModel.State;
                 account.PhoneNumber = signUpViewModel.PhoneNumber;
                 account.PinCode = signUpViewModel.PinCode;
-                return RedirectToAction("Login");
+                using (EmployeeDBContext employeeDBContext = new EmployeeDBContext())
+                {
+                    employeeDBContext.Accounts.Add(account);
+                    employeeDBContext.SaveChanges();
+                }
+                ModelState.Clear();
+               
             }
-            return View();
+            return View("Login");
         }
         [HttpGet]
         public ActionResult Login()

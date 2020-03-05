@@ -1,4 +1,4 @@
-﻿@model EmployeeManagementOnline.Entity.Account
+﻿@model EmployeeManagementOnline.Models.SignUpViewModel
 
 @{
     ViewBag.Title = "SignUp";
@@ -12,16 +12,17 @@
         padding: 15px;
         width: 100px;
     }
-    span{
-        color:red;
+
+    span {
+        color: red;
     }
 </style>
 @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
 {
-<table align="center">
+    <table align="center">
         <tr>
             <td><label>*Name</label></td>
-            <td>@Html.TextBoxFor(Model => Model.Name)<span>@Html.ValidationMessageFor(Model=>Model.Name)</span></td>
+            <td>@Html.TextBoxFor(Model => Model.Name)<span>@Html.ValidationMessageFor(Model => Model.Name)</span></td>
         </tr>
         <tr>
             <td><label>*Email ID</label></td>
@@ -33,7 +34,8 @@
                 @Html.RadioButtonFor(Model => Model.Gender, "Male", new { id = "Male" })Male
                 @Html.RadioButtonFor(Model => Model.Gender, "Female", new { id = "Female" })Female
                 @Html.RadioButtonFor(Model => Model.Gender, "Others", new { id = "Others" })Others
-                <span>@Html.ValidationMessageFor(Model => Model.Gender)</span></td>
+                <span>@Html.ValidationMessageFor(Model => Model.Gender)</span>
+            </td>
         </tr>
         <tr>
             <td>LanguagesKnown</td>
@@ -51,48 +53,52 @@
                new SelectListItem{Text="UG",Value="UG"},
                new SelectListItem{Text="PG",Value="PG"},
                }, "selectQualification")<span>@Html.ValidationMessageFor(Model => Model.Qualification)</span>
-            </td>
-        </tr>
-        <tr>
-            <td><label>*PhoneNumber</label></td>
-            <td>@Html.TextBoxFor(Model => Model.PhoneNumber)<span>@Html.ValidationMessageFor(Model => Model.PhoneNumber)</span></td>
-        </tr>
-        <tr>
-            <td><label>*Password</label></td>
-            <td>@Html.PasswordFor(Model => Model.Password)<span>@Html.ValidationMessageFor(Model => Model.Password)</span></td>
-        </tr>
-        <tr>
-            <td><label>*Address</label></td>
-            <td>@Html.TextBoxFor(Model => Model.Address)<span>@Html.ValidationMessageFor(Model => Model.Address)</span></td>
-        </tr>
-        <tr>
-            <td><label>*City</label></td>
-            <td>
-                @Html.DropDownList("City", new List<SelectListItem> {
-               new SelectListItem{Text="Coimbatore",Value="Cbe"},
-               new SelectListItem{Text="Chennai",Value="Chennai"},
-               }, "selectCity")<span>@Html.ValidationMessageFor(Model => Model.City)</span>
-            </td>
-        </tr>
-        <tr>
-            <td><label>*State</label></td>
-            <td>
-                @Html.DropDownList("State", new List<SelectListItem> {
-               new SelectListItem{Text="TamilNadu",Value="TN"},
-               new SelectListItem{Text="Karnataka",Value="Karnataka"},
-               }, "selectState")<span>@Html.ValidationMessageFor(Model => Model.State)</span>
-            </td>
-        </tr>
-        <tr>
-            <td><label>*PinCode</label></td>
-            <td>@Html.TextBoxFor(Model => Model.PinCode)<span>@Html.ValidationMessageFor(Model => Model.PinCode)</span></td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" />
-            </td>
-            <td>Already have an account??@Html.ActionLink("Login", "Login", "Account")</td>
-        </tr>
-    </table>
+        </td>
+    </tr>
+    <tr>
+        <td><label>*PhoneNumber</label></td>
+        <td>@Html.TextBoxFor(Model => Model.PhoneNumber)<span>@Html.ValidationMessageFor(Model => Model.PhoneNumber)</span></td>
+    </tr>
+    <tr>
+        <td><label>*Password</label></td>
+        <td>@Html.PasswordFor(Model => Model.Password)<span>@Html.ValidationMessageFor(Model => Model.Password)</span></td>
+    </tr>
+    <tr>
+        <td><label>*Confirm Password</label></td>
+        <td>@Html.PasswordFor(Model => Model.ConfirmPassword)<span>@Html.ValidationMessageFor(Model => Model.ConfirmPassword)</span></td>
+    </tr>
+    <tr>
+        <td><label>*Address</label></td>
+        <td>@Html.TextBoxFor(Model => Model.Address)<span>@Html.ValidationMessageFor(Model => Model.Address)</span></td>
+    </tr>
+    <tr>
+        <td><label>*City</label></td>
+        <td>
+            @Html.DropDownList("City", new List<SelectListItem> {
+           new SelectListItem{Text="Coimbatore",Value="Cbe"},
+           new SelectListItem{Text="Chennai",Value="Chennai"},
+           }, "selectCity")<span>@Html.ValidationMessageFor(Model => Model.City)</span>
+    </td>
+</tr>
+<tr>
+    <td><label>*State</label></td>
+    <td>
+        @Html.DropDownList("State", new List<SelectListItem> {
+       new SelectListItem{Text="TamilNadu",Value="TN"},
+       new SelectListItem{Text="Karnataka",Value="Karnataka"},
+       }, "selectState")<span>@Html.ValidationMessageFor(Model => Model.State)</span>
+</td>
+</tr>
+<tr>
+    <td><label>*PinCode</label></td>
+    <td>@Html.TextBoxFor(Model => Model.PinCode)<span>@Html.ValidationMessageFor(Model => Model.PinCode)</span></td>
+</tr>
+<tr>
+    <td>
+        <input type="submit" />
+    </td>
+    <td>Already have an account??@Html.ActionLink("Login", "Login", "Account")</td>
+</tr>
+</table>
 }
 

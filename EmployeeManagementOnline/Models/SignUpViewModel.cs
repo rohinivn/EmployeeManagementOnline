@@ -13,10 +13,15 @@ namespace EmployeeManagementOnline.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "EmailId is required")]
         [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", ErrorMessage = "Please enter a valid email address")]
+        [Key]
         public string EmailId { get; set; }
         [RegularExpression(@"^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$", ErrorMessage = (@"At least one lower case letter,one upper case letter,one special character,one digits,At least 8 characters length"))]
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
+        [Required(ErrorMessage ="ConfirmPassword is required")]
+        [Compare("Password",ErrorMessage ="Retype the password")]
+        public string ConfirmPassword { get; set; }
+
         [Required(ErrorMessage ="Gender is required")]
         public string Gender { get; set; }
         public string LanguagesKnown { get; set; }
@@ -34,9 +39,10 @@ namespace EmployeeManagementOnline.Models
         public string State { get; set; }
         [Required(ErrorMessage = "PhoneNumber is required")]
         [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public long PhoneNumber { get; set; }
         [Required(ErrorMessage = "Pincode is required")]
-
+        [RegularExpression(@"^([0-9]{6})$", ErrorMessage = "Invalid Pin Code.")]
         public int PinCode { get; set; }
 
     }
